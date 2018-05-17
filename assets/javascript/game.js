@@ -18,6 +18,13 @@ function Defender(name, hp, counter) {
     this.counterAttackPower = counter;
 }
 
+//TODO: OBJECT FUNCTIONS SYNTAX EXAMPLE - delete when no more needed
+Character.prototype.greeting = function () {
+    alert('Hi! I\'m ' + this.name + '.');
+};
+
+
+
 //TODO: remove
 // TESTS
 var luke = new Character("luke", 100);
@@ -26,3 +33,5 @@ var vader = new Attacker("darth", 1000, 100, 50);
 console.log(vader);
 var jedi = new Defender("jedi1", 200, 8);
 console.log(jedi);
+
+luke.greeting();
