@@ -35,17 +35,13 @@ function setOriginalAttack(Obj) {
     originalAttack = Obj.attackPower;
 }
 
+// ES6+ 
 $(document).on('click', 'img', function () {
     var player = CharArray.find(item => item.name == (this).id);
     console.log(player);
-
-    // for (var i = 0; i < CharArray.length; i++) {
-    //     if (CharArray[i].name == (this).id) {
-    //         player = CharArray[i];
-    //         CharArray.splice(i, 1);
-    // }
-    // }
 });
+
+// SUPPORT FOR OLDER BROWSERS
 // $(document).on('click', 'img', function () {
 //     for (var i = 0; i < CharArray.length; i++) {
 //         if (CharArray[i].name == (this).id) {
@@ -53,11 +49,7 @@ $(document).on('click', 'img', function () {
 //             CharArray.splice(i, 1);
 //         }
 //     }
+//     console.log(player);
 // });
 
 initCharacters();
-
-// WORKING!
-// $(document).on('click', 'img', function () {
-//     alert((this).id);
-// // });
