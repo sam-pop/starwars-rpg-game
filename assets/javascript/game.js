@@ -2,6 +2,7 @@
 var originalAttack = 0; // original attack strength
 var player; // holds the player Object
 var charArray = []; // array that stores the game characters (Objects)
+var playerSelected = false; // flag to mark if we picked a player yet
 
 
 // Constructor
@@ -43,18 +44,15 @@ function setOriginalAttack(Obj) {
     originalAttack = Obj.attackPower;
 }
 
-// // ES6+ 
-// $(document).on('click', 'img', function () {
-//     var player = charArray.find(item => item.name == (this).id);
-// });
-
-// SUPPORT FOR OLDER BROWSERS
 // Stores the character the user clicked on in the player variable and removes it from charArray
 $(document).on('click', 'img', function () {
-    for (var i = 0; i < charArray.length; i++) {
-        if (charArray[i].name == (this).id) {
-            player = charArray[i];
-            charArray.splice(i, 1);
+    if (!playerSelected) {
+        for (var i = 0; i < charArray.length; i++) {
+            if (charArray[i].name == (this).id) {
+                player = charArray[i];
+                charArray.splice(i, 1);
+                playerSelected = true;
+            }
         }
     }
 });
