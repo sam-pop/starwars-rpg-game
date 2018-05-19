@@ -1,37 +1,52 @@
 // Global variables
+var originalAttack = 0;
+var player;
+var CharArray = [];
 
-
-// Constructors
-function Character(name, hp) {
+// Constructor
+function Character(name, hp, ap, counter) {
     this.name = name;
     this.healthPoints = hp;
-}
-
-function Attacker(name, hp, ap, counter) {
-    Character.call(this, name, hp);
     this.attackPower = ap;
     this.counterAttackPower = counter;
 }
 
-function Defender(name, hp, counter) {
-    Character.call(this, name, hp);
-    this.counterAttackPower = counter;
-}
-
-//TODO: OBJECT FUNCTIONS SYNTAX EXAMPLE - delete when no more needed
-Character.prototype.greeting = function () {
-    alert('Hi! I\'m ' + this.name + '.');
+Character.prototype.increaseAttack = function () {
+    this.attackPower += originalAttack;
 };
 
+Character.prototype.attack = function (Obj) {
+    Obj.healthPoints -= this.attackPower;
+    this.increaseAttack();
+};
 
+Character.prototype.counterAttack = function (Obj) {
+    Obj.healthPoints -= this.counterAttackPower;
+};
 
-//TODO: remove
-// TESTS
-var luke = new Character("luke", 100);
-console.log(luke);
-var vader = new Attacker("darth", 1000, 100, 50);
-console.log(vader);
-var jedi = new Defender("jedi1", 200, 8);
-console.log(jedi);
+function initCharacters() {
+    var luke = new Character("luke", 100, 10, 5);
+    var vader = new Character("vader", 200, 20, 10);
+    var obi = new Character("obi", 150, 15, 12);
+    CharArray.push(luke, vader, obi);
+}
 
-luke.greeting();
+function setOriginalAttack(Obj) {
+    originalAttack = Obj.attackPower;
+}
+
+$(document).on('click', 'img', function () {
+    for (var i = 0; i < CharArray.length; i++) {
+        if (CharArray[i].name == (this).id) {
+            player = CharArray[i];
+            CharArray.splice(i, 1);
+        }
+    }
+});
+
+initCharacters();
+
+// WORKING!
+// $(document).on('click', 'img', function () {
+//     alert((this).id);
+// // });
