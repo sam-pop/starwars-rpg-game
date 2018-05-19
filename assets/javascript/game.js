@@ -36,13 +36,24 @@ function setOriginalAttack(Obj) {
 }
 
 $(document).on('click', 'img', function () {
-    for (var i = 0; i < CharArray.length; i++) {
-        if (CharArray[i].name == (this).id) {
-            player = CharArray[i];
-            CharArray.splice(i, 1);
-        }
-    }
+    var player = CharArray.find(item => item.name == (this).id);
+    console.log(player);
+
+    // for (var i = 0; i < CharArray.length; i++) {
+    //     if (CharArray[i].name == (this).id) {
+    //         player = CharArray[i];
+    //         CharArray.splice(i, 1);
+    // }
+    // }
 });
+// $(document).on('click', 'img', function () {
+//     for (var i = 0; i < CharArray.length; i++) {
+//         if (CharArray[i].name == (this).id) {
+//             player = CharArray[i];
+//             CharArray.splice(i, 1);
+//         }
+//     }
+// });
 
 initCharacters();
 
