@@ -59,3 +59,6 @@ $(document).on('click', 'img', function () {
 });
 
 initCharacters();
+
+
+//TODO: REMINDER! use charArr[index] to perform actions like attack etc, since luke,vader,obi etc are declared locally!
