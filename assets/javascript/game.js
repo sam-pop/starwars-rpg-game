@@ -54,6 +54,7 @@ $(document).on('click', 'img', function () {
                 playerSelected = true;
             }
         }
+        $('#playerDiv').append(this);
     }
 });
 
