@@ -67,7 +67,6 @@ function characterCards(divID) {
     $(divID).children().remove();
     for (var i = 0; i < charArray.length; i++) {
         $(divID).append("<div />");
-        // $(divID + ' div').attr("style", "width: 150px;");
         $(divID + ' div:last-child').addClass("card");
         $(divID + ' div:last-child').append("<img />");
         $(divID + " img:last-child").attr("id", charArray[i].name);

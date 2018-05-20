@@ -10,16 +10,8 @@
     text-align: center;
 }
 
-.vs {
-    padding-top: 10%;
-}
-
-#playerDiv {
-    background-color: yellow;
-}
-
-#defenderDiv {
-    background-color: yellow;
+.paddingTop {
+    padding-top: 5%;
 }
 
 .btn {
