@@ -36,9 +36,9 @@ Character.prototype.counterAttack = function (Obj) {
 
 // Initialize all the characters
 function initCharacters() {
-    var luke = new Character("luke", 100, 10, 5, "./assets/images/1.jpg");
-    var vader = new Character("vader", 200, 20, 10, "holder.js/150x150");
-    var obi = new Character("obi", 150, 15, 12, "holder.js/200x200");
+    var luke = new Character("luke", 100, 10, 5, "./assets/images/vader.jpg");
+    var vader = new Character("vader", 200, 20, 10, "./assets/images/vader.jpg");
+    var obi = new Character("obi", 150, 15, 12, "./assets/images/vader.jpg");
     charArray.push(luke, vader, obi);
 }
 
@@ -63,11 +63,13 @@ function updatePics(fromDivID, toDivID) {
         $(toDivID).append("<img />");
         $(toDivID + " img:last-child").attr("id", charArray[i].name);
         $(toDivID + " img:last-child").attr("src", charArray[i].pic);
+        $(toDivID + " img:last-child").attr("width", 150);
+        $(toDivID + " img:last-child").addClass("img-thumbnail");
     }
 }
 
 // Stores the character the user clicked on in the player variable and removes it from charArray
-$(document).on("click", "img", function () {
+$(document).on("click", "img", function () { //FIXME: can choose the player as defender after beating the first defender
     if (playerSelected && !defenderSelected) {
         for (var j = 0; j < charArray.length; j++) {
             if (charArray[j].name == (this).id) {
