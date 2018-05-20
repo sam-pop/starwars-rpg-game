@@ -75,12 +75,7 @@ function updatePics(fromDivID, toDivID) {
 
 function createGameLayout() {
     $('#firstScreen').empty();
-    $("<div/>").appendTo("div#defendersLeftDiv");
-
-    // $('<div></div>').appendTo('#game');
-    $('#defendersLeftDiv').append('<div>');
-    // $('#game').children().append("hello");
-    // $('#game').html("<div class='row'><div class='col-4'><div id='defendersLeftDiv'></div></div></div>")
+    $('#secondScreen').show();
 }
 
 // Stores the character the user clicked on in the player variable and removes it from charArray
@@ -133,6 +128,7 @@ $(document).on("click", "#attackBtn", function () {
 });
 
 $(document).ready(function () {
+    $('#secondScreen').hide();
     initCharacters();
     updatePics("", "#game");
 });
