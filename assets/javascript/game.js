@@ -119,6 +119,9 @@ $(document).on("click", "img", function () {
         for (var i = 0; i < charArray.length; i++) {
             if (charArray[i].name == (this).id) {
                 player = charArray[i]; // sets current player
+                $('body').css({
+                    "background-image": "url('./assets/images/" + this.id[0] + ".png')"
+                });
                 setBaseAttack(player);
                 charArray.splice(i, 1);
                 playerSelected = true;
