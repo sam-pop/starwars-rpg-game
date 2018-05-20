@@ -37,8 +37,8 @@ Character.prototype.counterAttack = function (Obj) {
 // Initialize all the characters
 function initCharacters() {
     var luke = new Character("luke", 100, 10, 5, "./assets/images/vader.jpg");
-    var vader = new Character("vader", 200, 20, 10, "./assets/images/vader.jpg");
-    var obi = new Character("obi", 150, 15, 12, "./assets/images/vader.jpg");
+    var vader = new Character("vader", 200, 50, 30, "./assets/images/vader.jpg");
+    var obi = new Character("obi", 150, 15, 2, "./assets/images/vader.jpg");
     charArray.push(luke, vader, obi);
 }
 
@@ -54,6 +54,12 @@ function isAlive(Obj) {
     }
 
     return false;
+}
+
+function isWinner() {
+    if (charArray.length == 0)
+        return true;
+    else return false;
 }
 
 function updatePics(fromDivID, toDivID) {
@@ -103,11 +109,13 @@ $(document).on("click", "#attackBtn", function () {
         } else {
             if (!isAlive(player)) {
                 alert("PLAYER DIED!"); //TODO: change this line
-            }
-            if (!isAlive(defender)) {
+            } else if (!isAlive(defender)) {
                 alert("DEFENDER DIED!"); //TODO: change this line
                 $("#defenderDiv").children().remove();
                 defenderSelected = false;
+                if (isWinner()) {
+                    // TODO: do somethign if player eliminated all defenders 
+                }
             }
         }
     }
