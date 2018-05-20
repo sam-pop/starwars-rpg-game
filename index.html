@@ -9,19 +9,22 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/animate.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
 </head>
 
 <body>
-    <div id="firstScreen" class="container-fluid">
+    <!-- the select player character screen -->
+    <div id="firstScreen" class="container-fluid animated zoomIn bounceOut">
         <div id="game">
             Please pick a character:
             <br>
         </div>
     </div>
-    <div id="secondScreen" class="container-fluid">
+    <!-- the main game screen -->
+    <div id="secondScreen" class="container-fluid animated ">
         <div class="row">
             <div class="col-12">
                 <div id="defendersLeftDiv">Defenders list:</div>
@@ -35,8 +38,9 @@
                 <div id="defenderDiv">Defender:</div>
             </div>
         </div>
+        <!-- holds the button -->
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 btn">
                 <button type="button" name="attack" id="attackBtn" class="btn btn-dark btn-lg">ATTACK!</button>
             </div>
         </div>

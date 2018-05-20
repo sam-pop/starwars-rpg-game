@@ -1,7 +1,10 @@
 #firstScreen {
-    /* background-color: red; */
     min-height: 100%;
     position: absolute;
     text-align: center;
     padding-top: 15%;
+}
+
+.btn {
+    text-align: center;
 }

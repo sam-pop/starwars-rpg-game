@@ -52,16 +52,17 @@ function isAlive(Obj) {
     if (Obj.healthPoints > 0) {
         return true;
     }
-
     return false;
 }
 
+// Checks if the player has won
 function isWinner() {
     if (charArray.length == 0)
         return true;
     else return false;
 }
 
+// Update the characters pictures location on the screen (move them between divs)
 function updatePics(fromDivID, toDivID) {
     $(fromDivID).children().remove();
     for (var i = 0; i < charArray.length; i++) {
@@ -73,13 +74,15 @@ function updatePics(fromDivID, toDivID) {
     }
 }
 
-function createGameLayout() {
+// Change the view from the first screen to the second screen
+function changeView() {
     $('#firstScreen').empty();
     $('#secondScreen').show();
 }
 
-// Stores the character the user clicked on in the player variable and removes it from charArray
+
 $(document).on("click", "img", function () {
+    // Stores the defender the user has clicked on in the defender variable and removes it from the charArray
     if (playerSelected && !defenderSelected && (this.id != player.name)) {
         for (var j = 0; j < charArray.length; j++) {
             if (charArray[j].name == (this).id) {
@@ -90,6 +93,7 @@ $(document).on("click", "img", function () {
         }
         $("#defenderDiv").append(this); // appends the selected defender to the div
     }
+    // Stores the character the user has clicked on in the player variable and removes it from charArray
     if (!playerSelected) {
         for (var i = 0; i < charArray.length; i++) {
             if (charArray[i].name == (this).id) {
@@ -97,7 +101,7 @@ $(document).on("click", "img", function () {
                 setBaseAttack(player);
                 charArray.splice(i, 1);
                 playerSelected = true;
-                createGameLayout();
+                changeView();
             }
         }
         updatePics("#game", "#defendersLeftDiv");
@@ -106,7 +110,7 @@ $(document).on("click", "img", function () {
 
 });
 
-// Attack button
+// The attack button functionality
 $(document).on("click", "#attackBtn", function () {
     if (playerSelected && defenderSelected) {
         if (isAlive(player) && isAlive(defender)) {
@@ -127,6 +131,7 @@ $(document).on("click", "#attackBtn", function () {
     }
 });
 
+// EXECUTE
 $(document).ready(function () {
     $('#secondScreen').hide();
     initCharacters();
