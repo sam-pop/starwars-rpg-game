@@ -48,21 +48,19 @@ function setOriginalAttack(Obj) {
 
 // Stores the character the user clicked on in the player variable and removes it from charArray
 $(document).on("click", "img", function () {
-    if (playerSelected && !defenderSelected) { // sets defender
+    if (playerSelected && !defenderSelected) {
         for (var j = 0; j < charArray.length; j++) {
             if (charArray[j].name == (this).id) {
-                defender = charArray[j];
-                console.log("​defender", defender); // TODO: DELETE
+                defender = charArray[j]; // sets defender
                 defenderSelected = true;
             }
         }
         $("#defenderDiv").append(this); // appends the selected defender to the div
     }
-    if (!playerSelected) { // sets current player
+    if (!playerSelected) {
         for (var i = 0; i < charArray.length; i++) {
             if (charArray[i].name == (this).id) {
-                player = charArray[i];
-                console.log("​player", player); //TODO: DELETE
+                player = charArray[i]; // sets current player
                 setOriginalAttack(player);
                 charArray.splice(i, 1);
                 playerSelected = true;
@@ -72,19 +70,13 @@ $(document).on("click", "img", function () {
     }
 });
 
+// Attack button
 $(document).on("click", "#attackBtn", function () {
-    player.attack(defender);
-    console.log("----------------");
-    console.log('​playerAttack', player);
-    console.log('​defenderAttack', defender);
-    console.log("----------------");
-
+    if (playerSelected && defenderSelected) {
+        player.attack(defender);
+    }
 });
 
 $(document).ready(function () {
     initCharacters();
 });
-
-
-
-//TODO: REMINDER! use charArr[index] to perform actions like attack etc, since luke,vader,obi etc are declared locally!
