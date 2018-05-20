@@ -36,9 +36,9 @@ Character.prototype.counterAttack = function (Obj) {
 
 // Initialize all the characters
 function initCharacters() {
-    var luke = new Character("luke", 100, 10, 5, "./assets/images/vader.jpg");
-    var vader = new Character("vader", 200, 50, 30, "./assets/images/vader.jpg");
-    var obi = new Character("obi", 150, 15, 2, "./assets/images/vader.jpg");
+    var luke = new Character("Luke Skywalker", 100, 10, 5, "./assets/images/vader.jpg");
+    var vader = new Character("Darth Vader", 200, 50, 30, "./assets/images/vader.jpg");
+    var obi = new Character("Obi One", 150, 15, 2, "./assets/images/vader.jpg");
     charArray.push(luke, vader, obi);
 }
 
@@ -63,6 +63,25 @@ function isWinner() {
 }
 
 // Update the characters pictures location on the screen (move them between divs)
+function characterCards(divID) {
+    $(divID).children().remove();
+    for (var i = 0; i < charArray.length; i++) {
+        $(divID).append("<div />");
+        // $(divID + ' div').attr("style", "width: 150px;");
+        $(divID + ' div:last-child').addClass("card");
+        $(divID + ' div:last-child').append("<img />");
+        $(divID + " img:last-child").attr("id", charArray[i].name);
+        $(divID + " img:last-child").attr("class", "card-img-top");
+        $(divID + " img:last-child").attr("src", charArray[i].pic);
+        $(divID + " img:last-child").attr("width", 150);
+        $(divID + " img:last-child").addClass("img-thumbnail");
+        $(divID + ' div:last-child').append(charArray[i].name + "<br>");
+        $(divID + ' div:last-child').append("HP: " + charArray[i].healthPoints);
+        $(divID + ' idv:last-child').append();
+
+    }
+}
+
 function updatePics(fromDivID, toDivID) {
     $(fromDivID).children().remove();
     for (var i = 0; i < charArray.length; i++) {
@@ -106,6 +125,7 @@ $(document).on("click", "img", function () {
             }
         }
         updatePics("#game", "#defendersLeftDiv");
+        console.log('​this', this);
         $("#playerDiv").append(this); // appends the selected player to the div
     }
 
@@ -136,5 +156,5 @@ $(document).on("click", "#attackBtn", function () {
 $(document).ready(function () {
     $('#secondScreen').hide();
     initCharacters();
-    updatePics("", "#game");
+    characterCards("#game");
 });

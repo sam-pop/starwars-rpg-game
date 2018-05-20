@@ -18,24 +18,29 @@
 <body>
     <!-- the select player character screen -->
     <div id="firstScreen" class="container-fluid animated zoomIn bounceOut">
-        <div id="game">
-            Please pick a character:
-            <br>
+        Please pick a character:
+        <br>
+        <div id="game" class="ctr container card-deck">
         </div>
     </div>
     <!-- the main game screen -->
     <div id="secondScreen" class="container-fluid animated ">
         <div class="row">
-            <div class="col-12">
-                <div id="defendersLeftDiv">Defenders list:</div>
+            <div class="col-12 ctr">
+                Defenders list:
+                <div id="defendersLeftDiv"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-2">
-                <div id="playerDiv">Player:</div>
+        <div class="row text-center">
+            <div class="col-5">
+                Player:
+                <div id="playerDiv"></div>
             </div>
-            <div class="col-8">
-                <div id="defenderDiv">Defender:</div>
+            <div class="col-2 vs">
+                VS.</div>
+            <div class="col-5">
+                Defender:
+                <div id="defenderDiv"></div>
             </div>
         </div>
         <!-- holds the button -->

@@ -5,6 +5,23 @@
     padding-top: 15%;
 }
 
+.ctr {
+    margin: 0 auto !important;
+    text-align: center;
+}
+
+.vs {
+    padding-top: 10%;
+}
+
+#playerDiv {
+    background-color: yellow;
+}
+
+#defenderDiv {
+    background-color: yellow;
+}
+
 .btn {
     text-align: center;
 }
