@@ -46,6 +46,15 @@ function setOriginalAttack(Obj) {
     originalAttack = Obj.attackPower;
 }
 
+// Checks if character is alive
+function isAlive(Obj) {
+    if (Obj.healthPoints > 0) {
+        return true;
+    }
+
+    return false;
+}
+
 // Stores the character the user clicked on in the player variable and removes it from charArray
 $(document).on("click", "img", function () {
     if (playerSelected && !defenderSelected) {
@@ -73,7 +82,19 @@ $(document).on("click", "img", function () {
 // Attack button
 $(document).on("click", "#attackBtn", function () {
     if (playerSelected && defenderSelected) {
-        player.attack(defender);
+        if (isAlive(player) && isAlive(defender)) {
+            player.attack(defender);
+            defender.counterAttack(player);
+        } else {
+            if (!isAlive(player)) {
+                alert("PLAYER DIED!"); //TODO: change this line
+            }
+            if (!isAlive(defender)) {
+                alert("DEFENDER DIED!"); //TODO: change this line
+                $("#defenderDiv").children().remove();
+                defenderSelected = false;
+            }
+        }
     }
 });
 
