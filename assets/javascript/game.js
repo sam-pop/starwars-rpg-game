@@ -140,12 +140,15 @@ $(document).on("click", "#attackBtn", function () {
             player.attack(defender);
             defender.counterAttack(player);
             $('#playerHealthDiv').html(player.healthPoints);
+            $('#defenderHealthDiv').html(defender.healthPoints);
             if (!isAlive(player)) {
                 $('#playerHealthDiv').html("0");
                 alert("PLAYER DIED!"); //TODO: change this line
-
-
             }
+            if (!isAlive(defender)) {
+                $('#defenderHealthDiv').html("0");
+            }
+
         } else if (!isAlive(defender)) {
             alert("DEFENDER DIED!"); //TODO: change this line
             $("#defenderDiv").children().remove();
