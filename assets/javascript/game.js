@@ -99,7 +99,7 @@ function updatePics(fromDivID, toDivID) {
 
 // plays audio file (.mp3)
 function playAudio() {
-    var audio = new Audio("./assets/media/themeSong.mp3");
+    var audio = new Audio("./assets/media/themeSongSmall.mp3");
     audio.play();
 }
 
@@ -126,6 +126,7 @@ $(document).on("click", "img", function () {
         $("#defenderDiv").addClass("animated zoomInRight");
         $("#defenderDiv").append("<br>" + defender.name);
         $("#defenderHealthDiv").append("HP: " + defender.healthPoints);
+        $("#defenderHealthDiv").addClass("animated zoomInRight");
     }
     // Stores the character the user has clicked on in the player variable and removes it from charArray
     if (!playerSelected) {
@@ -148,6 +149,7 @@ $(document).on("click", "img", function () {
         $("#playerDiv").addClass("animated zoomIn");
         $("#playerDiv").append(player.name);
         $("#playerHealthDiv").append("HP: " + player.healthPoints);
+        $("#playerHealthDiv").addClass("animated zoomIn");
     }
 
 });
