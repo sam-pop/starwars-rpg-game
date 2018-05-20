@@ -69,7 +69,7 @@ function updatePics(fromDivID, toDivID) {
 }
 
 // Stores the character the user clicked on in the player variable and removes it from charArray
-$(document).on("click", "img", function () { //FIXME: can choose the player as defender after beating the first defender
+$(document).on("click", "img", function () { //FIXME: can choose the player as defender after beating the first defender - maybe splice the defenser from the array
     if (playerSelected && !defenderSelected) {
         for (var j = 0; j < charArray.length; j++) {
             if (charArray[j].name == (this).id) {
