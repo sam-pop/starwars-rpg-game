@@ -57,7 +57,7 @@ function isAlive(Obj) {
 
 // Checks if the player has won
 function isWinner() {
-    if (charArray.length == 0)
+    if (charArray.length == 0 && player.healthPoints > 0)
         return true;
     else return false;
 }
@@ -112,7 +112,7 @@ $(document).on("click", "img", function () {
         }
         $("#defenderDiv").append(this); // appends the selected defender to the div
         $("#defenderDiv").append("<br>" + defender.name);
-        $("#defenderHealthDiv").append(defender.healthPoints);
+        $("#defenderHealthDiv").append("HP: " + defender.healthPoints);
     }
     // Stores the character the user has clicked on in the player variable and removes it from charArray
     if (!playerSelected) {
@@ -128,7 +128,7 @@ $(document).on("click", "img", function () {
         updatePics("#game", "#defendersLeftDiv");
         $("#playerDiv").append(this); // appends the selected player to the div
         $("#playerDiv").append(player.name);
-        $("#playerHealthDiv").append(player.healthPoints);
+        $("#playerHealthDiv").append("HP: " + player.healthPoints);
     }
 
 });
@@ -139,24 +139,30 @@ $(document).on("click", "#attackBtn", function () {
         if (isAlive(player) && isAlive(defender)) {
             player.attack(defender);
             defender.counterAttack(player);
-            $('#playerHealthDiv').html(player.healthPoints);
-            $('#defenderHealthDiv').html(defender.healthPoints);
-            if (!isAlive(player)) {
-                $('#playerHealthDiv').html("0");
-                alert("PLAYER DIED!"); //TODO: change this line
-            }
+            $('#playerHealthDiv').html("HP: " + player.healthPoints);
+            $('#defenderHealthDiv').html("HP: " + defender.healthPoints);
             if (!isAlive(defender)) {
-                $('#defenderHealthDiv').html("0");
+                $('#defenderHealthDiv').html("DEFETED!");
+                $('#playerHealthDiv').html("Enemy defeated!");
+
+                $('#msg').html("Pick another enemy to battle...");
+            }
+            if (!isAlive(player)) {
+                $('#playerHealthDiv').html("YOU LOST!");
+                $('#msg').html("Try again...");
             }
 
-        } else if (!isAlive(defender)) {
-            alert("DEFENDER DIED!"); //TODO: change this line
+        }
+        if (!isAlive(defender)) {
             $("#defenderDiv").children().remove();
             $("#defenderDiv").html("");
             $("#defenderHealthDiv").html("");
             defenderSelected = false;
             if (isWinner()) {
-                // TODO: do somethign if player eliminated all defenders 
+                $('#secondScreen').hide();
+                $('#globalMsg').show();
+                // $('#globalMsg').html("CONGRATULATIONS!<br> You saved the galaxy.");
+
             }
         }
     }
@@ -165,6 +171,8 @@ $(document).on("click", "#attackBtn", function () {
 // EXECUTE
 $(document).ready(function () {
     $('#secondScreen').hide();
+    $('#globalMsg').hide();
+
     initCharacters();
     characterCards("#game");
 });

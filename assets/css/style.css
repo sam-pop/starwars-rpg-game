@@ -1,3 +1,13 @@
+body {
+    color: gray !important;
+    background-color: black;
+    background-image: url("../images/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
 #firstScreen {
     min-height: 100%;
     position: absolute;
@@ -10,6 +20,12 @@
     text-align: center;
 }
 
+.bg-trans {
+    background: rgba(0, 0, 0, 0.527) !important;
+    width: 50%;
+    margin: 0 auto;
+}
+
 .paddingTop {
     padding-top: 5%;
 }
@@ -20,4 +36,10 @@
 
 .animated {
     animation-duration: 1.5s;
+}
+
+#globalMsg {
+    padding-top: 20%;
+    text-align: center;
+    font-size: 3em;
 }
