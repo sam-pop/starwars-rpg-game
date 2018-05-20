@@ -48,7 +48,19 @@ function setOriginalAttack(Obj) {
 
 // Stores the character the user clicked on in the player variable and removes it from charArray
 $(document).on("click", "img", function () {
+    if (playerSelected && !defenderSelected) { // sets defender
+        alert("second");
+        for (var j = 0; j < charArray.length; j++) {
+            if (charArray[j].name == (this).id) {
+                defender = charArray[j];
+                console.log("​defender", defender); // TODO: DELETE
+                defenderSelected = true;
+            }
+        }
+        $("#defenderDiv").append(this); // appends the selected defender to the div
+    }
     if (!playerSelected) { // sets current player
+        alert("first");
         for (var i = 0; i < charArray.length; i++) {
             if (charArray[i].name == (this).id) {
                 player = charArray[i];
@@ -59,16 +71,6 @@ $(document).on("click", "img", function () {
             }
         }
         $("#playerDiv").append(this); // appends the selected player to the div
-    }
-    if (playerSelected && !defenderSelected) { // sets defender
-        for (var j = 0; j < charArray.length; j++) {
-            if (charArray[j].name == (this).id) {
-                defender = charArray[j];
-                console.log("​defender", defender); // TODO: DELETE
-                defenderSelected = true;
-            }
-        }
-        $("#defenderDiv").append(this); // appends the selected defender to the div
     }
 });
 
