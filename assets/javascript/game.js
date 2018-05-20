@@ -111,6 +111,8 @@ $(document).on("click", "img", function () {
             }
         }
         $("#defenderDiv").append(this); // appends the selected defender to the div
+        $("#defenderDiv").append("<br>" + defender.name);
+        $("#defenderHealthDiv").append(defender.healthPoints);
     }
     // Stores the character the user has clicked on in the player variable and removes it from charArray
     if (!playerSelected) {
@@ -124,8 +126,9 @@ $(document).on("click", "img", function () {
             }
         }
         updatePics("#game", "#defendersLeftDiv");
-        console.log('​this', this);
         $("#playerDiv").append(this); // appends the selected player to the div
+        $("#playerDiv").append(player.name);
+        $("#playerHealthDiv").append(player.healthPoints);
     }
 
 });
@@ -136,16 +139,21 @@ $(document).on("click", "#attackBtn", function () {
         if (isAlive(player) && isAlive(defender)) {
             player.attack(defender);
             defender.counterAttack(player);
-        } else {
+            $('#playerHealthDiv').html(player.healthPoints);
             if (!isAlive(player)) {
+                $('#playerHealthDiv').html("0");
                 alert("PLAYER DIED!"); //TODO: change this line
-            } else if (!isAlive(defender)) {
-                alert("DEFENDER DIED!"); //TODO: change this line
-                $("#defenderDiv").children().remove();
-                defenderSelected = false;
-                if (isWinner()) {
-                    // TODO: do somethign if player eliminated all defenders 
-                }
+
+
+            }
+        } else if (!isAlive(defender)) {
+            alert("DEFENDER DIED!"); //TODO: change this line
+            $("#defenderDiv").children().remove();
+            $("#defenderDiv").html("");
+            $("#defenderHealthDiv").html("");
+            defenderSelected = false;
+            if (isWinner()) {
+                // TODO: do somethign if player eliminated all defenders 
             }
         }
     }
