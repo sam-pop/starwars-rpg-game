@@ -45,6 +45,10 @@ body {
     animation-duration: 1.5s;
 }
 
+#msg {
+    font-size: 1.2em;
+}
+
 #globalMsg {
     padding-top: 20%;
     text-align: center;

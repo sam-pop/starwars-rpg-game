@@ -25,12 +25,15 @@ Character.prototype.increaseAttack = function () {
 // Performs an attack
 Character.prototype.attack = function (Obj) {
     Obj.healthPoints -= this.attackPower;
+    $('#msg').html("You attacked " +
+        Obj.name + "for " + this.attackPower + " damage points.");
     this.increaseAttack();
 };
 
 // Performs a counter attack
 Character.prototype.counterAttack = function (Obj) {
     Obj.healthPoints -= this.counterAttackPower;
+    $('#msg').append("<br>" + this.name + " counter attacked you for " + this.counterAttackPower + " damage points.");
 };
 
 
@@ -63,7 +66,7 @@ function isWinner() {
     else return false;
 }
 
-// Update the characters pictures location on the screen (move them between divs)
+// Create the character cards onscreen
 function characterCards(divID) {
     $(divID).children().remove();
     for (var i = 0; i < charArray.length; i++) {
@@ -82,6 +85,7 @@ function characterCards(divID) {
     }
 }
 
+// Update the characters pictures location on the screen (move them between divs)
 function updatePics(fromDivID, toDivID) {
     $(fromDivID).children().remove();
     for (var i = 0; i < charArray.length; i++) {
@@ -91,6 +95,12 @@ function updatePics(fromDivID, toDivID) {
         $(toDivID + " img:last-child").attr("width", 150);
         $(toDivID + " img:last-child").addClass("img-thumbnail");
     }
+}
+
+// plays audio file (.mp3)
+function playAudio() {
+    var audio = new Audio("./assets/media/themeSong.mp3");
+    audio.play();
 }
 
 
@@ -109,9 +119,11 @@ $(document).on("click", "img", function () {
                 defender = charArray[j]; // sets defender
                 charArray.splice(j, 1);
                 defenderSelected = true;
+                $('#msg').html("Click the button to attack!");
             }
         }
-        $("#defenderDiv").append(this); // appends the selected defender to the div
+        $("#defenderDiv").append(this); // appends the selected defender to the div 
+        $("#defenderDiv").addClass("animated zoomInRight");
         $("#defenderDiv").append("<br>" + defender.name);
         $("#defenderHealthDiv").append("HP: " + defender.healthPoints);
     }
@@ -120,17 +132,20 @@ $(document).on("click", "img", function () {
         for (var i = 0; i < charArray.length; i++) {
             if (charArray[i].name == (this).id) {
                 player = charArray[i]; // sets current player
+                playAudio(); // starts theme song
                 $('body').css({
                     "background-image": "url('./assets/images/" + this.id[0] + ".jpg')"
-                });
+                }); // changes the background picture according to the user selection
                 setBaseAttack(player);
                 charArray.splice(i, 1);
                 playerSelected = true;
                 changeView();
+                $('#msg').html("Pick an enemy to fight!");
             }
         }
         updatePics("#game", "#defendersLeftDiv");
         $("#playerDiv").append(this); // appends the selected player to the div
+        $("#playerDiv").addClass("animated zoomIn");
         $("#playerDiv").append(player.name);
         $("#playerHealthDiv").append("HP: " + player.healthPoints);
     }
@@ -148,14 +163,16 @@ $(document).on("click", "#attackBtn", function () {
             if (!isAlive(defender)) {
                 $('#defenderHealthDiv').html("DEFETED!");
                 $('#playerHealthDiv').html("Enemy defeated!");
-
                 $('#msg').html("Pick another enemy to battle...");
             }
             if (!isAlive(player)) {
                 $('#playerHealthDiv').html("YOU LOST!");
                 $('#msg').html("Try again...");
+                $('#attackBtn').html("Restart Game");
+                $(document).on("click", "#attackBtn", function () { // restarts game
+                    location.reload();
+                });
             }
-
         }
         if (!isAlive(defender)) {
             $("#defenderDiv").children().remove();
@@ -165,8 +182,6 @@ $(document).on("click", "#attackBtn", function () {
             if (isWinner()) {
                 $('#secondScreen').hide();
                 $('#globalMsg').show();
-                // $('#globalMsg').html("CONGRATULATIONS!<br> You saved the galaxy.");
-
             }
         }
     }
@@ -176,7 +191,6 @@ $(document).on("click", "#attackBtn", function () {
 $(document).ready(function () {
     $('#secondScreen').hide();
     $('#globalMsg').hide();
-
     initCharacters();
     characterCards("#game");
 });

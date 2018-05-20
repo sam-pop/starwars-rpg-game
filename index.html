@@ -3,7 +3,6 @@
 
 <head>
     <title>StarWars RPG</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -18,13 +17,13 @@
 <body>
     <!-- the select player character screen -->
     <div id="firstScreen" class="container-fluid animated zoomIn bounceOut">
-        <h1>Pick a character:</h1>
+        <h1>Choose wisely:</h1>
         <br>
         <div id="game" class="ctr container card-deck">
         </div>
     </div>
     <!-- the main game screen -->
-    <div id="secondScreen" class="bg-trans container-fluid animated ">
+    <div id="secondScreen" class="bg-trans container-fluid animated slideInDown">
         <div class="row">
             <div class="col-12 ctr">
                 Enemies remaining:
@@ -40,7 +39,8 @@
                 </div>
             </div>
             <div class="col-2 paddingTop">
-                VS.
+                <!-- VS. -->
+                <img src="assets/images/Vs.png" alt="VS" width="100" />
             </div>
             <div class="col-5">
                 Enemy:
