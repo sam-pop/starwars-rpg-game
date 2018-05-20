@@ -36,9 +36,9 @@ Character.prototype.counterAttack = function (Obj) {
 
 // Initialize all the characters
 function initCharacters() {
-    var luke = new Character("luke", 100, 10, 5, "holder.js / 100 x100");
-    var vader = new Character("vader", 200, 20, 10, "holder.js / 150 x150");
-    var obi = new Character("obi", 150, 15, 12, "holder.js / 200 x200");
+    var luke = new Character("luke", 100, 10, 5, "./assets/images/1.jpg");
+    var vader = new Character("vader", 200, 20, 10, "holder.js/150x150");
+    var obi = new Character("obi", 150, 15, 12, "holder.js/200x200");
     charArray.push(luke, vader, obi);
 }
 
@@ -56,12 +56,13 @@ function isAlive(Obj) {
     return false;
 }
 
-function updatePics() {
+function updatePics(fromDivID, toDivID) {
+    $(fromDivID).children().remove();
     for (var i = 0; i < charArray.length; i++) {
         console.log(charArray[i].pic);
-        $("#pics").append("<img />");
-        $("#pics img").attr("id", charArray[i].name);
-        $("#pics img").attr("src", charArray[i].pic);
+        $(toDivID).append("<img />");
+        $(toDivID + " img:last-child").attr("id", charArray[i].name);
+        $(toDivID + " img:last-child").attr("src", charArray[i].pic);
     }
 }
 
@@ -85,12 +86,7 @@ $(document).on("click", "img", function () {
                 playerSelected = true;
             }
         }
-        for (var k = 0; k < charArray.length; k++) {
-            $("#defendersLeftDiv").html(charArray[k]);
-            console.log("​charArray[k]", charArray[k]);
-
-        }
-
+        updatePics("#pics", "#defendersLeftDiv");
         $("#playerDiv").append(this); // appends the selected player to the div
     }
 });
@@ -116,5 +112,5 @@ $(document).on("click", "#attackBtn", function () {
 
 $(document).ready(function () {
     initCharacters();
-    updatePics();
+    updatePics("", "#pics");
 });
