@@ -73,6 +73,16 @@ function updatePics(fromDivID, toDivID) {
     }
 }
 
+function createGameLayout() {
+    $('#firstScreen').empty();
+    $("<div/>").appendTo("div#defendersLeftDiv");
+
+    // $('<div></div>').appendTo('#game');
+    $('#defendersLeftDiv').append('<div>');
+    // $('#game').children().append("hello");
+    // $('#game').html("<div class='row'><div class='col-4'><div id='defendersLeftDiv'></div></div></div>")
+}
+
 // Stores the character the user clicked on in the player variable and removes it from charArray
 $(document).on("click", "img", function () {
     if (playerSelected && !defenderSelected && (this.id != player.name)) {
@@ -92,9 +102,10 @@ $(document).on("click", "img", function () {
                 setBaseAttack(player);
                 charArray.splice(i, 1);
                 playerSelected = true;
+                createGameLayout();
             }
         }
-        updatePics("#pics", "#defendersLeftDiv");
+        updatePics("#game", "#defendersLeftDiv");
         $("#playerDiv").append(this); // appends the selected player to the div
     }
 
@@ -123,5 +134,5 @@ $(document).on("click", "#attackBtn", function () {
 
 $(document).ready(function () {
     initCharacters();
-    updatePics("", "#pics");
+    updatePics("", "#game");
 });
