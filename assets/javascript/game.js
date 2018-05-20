@@ -59,7 +59,6 @@ function isAlive(Obj) {
 function updatePics(fromDivID, toDivID) {
     $(fromDivID).children().remove();
     for (var i = 0; i < charArray.length; i++) {
-        console.log(charArray[i].pic);
         $(toDivID).append("<img />");
         $(toDivID + " img:last-child").attr("id", charArray[i].name);
         $(toDivID + " img:last-child").attr("src", charArray[i].pic);
@@ -70,10 +69,12 @@ function updatePics(fromDivID, toDivID) {
 
 // Stores the character the user clicked on in the player variable and removes it from charArray
 $(document).on("click", "img", function () { //FIXME: can choose the player as defender after beating the first defender - maybe splice the defenser from the array
+    console.log('----​', charArray); // TODO: DELETE
     if (playerSelected && !defenderSelected) {
         for (var j = 0; j < charArray.length; j++) {
             if (charArray[j].name == (this).id) {
                 defender = charArray[j]; // sets defender
+                charArray.splice(j, 1);
                 defenderSelected = true;
             }
         }
