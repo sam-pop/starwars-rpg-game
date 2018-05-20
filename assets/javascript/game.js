@@ -177,6 +177,8 @@ $(document).on("click", "#attackBtn", function () {
             }
         }
         if (!isAlive(defender)) {
+            $("#defenderDiv").removeClass("animated zoomInRight");
+            $("#defenderHealthDiv").removeClass("animated zoomInRight");
             $("#defenderDiv").children().remove();
             $("#defenderDiv").html("");
             $("#defenderHealthDiv").html("");
