@@ -38,7 +38,7 @@ Character.prototype.counterAttack = function (Obj) {
 function initCharacters() {
     var luke = new Character("Luke Skywalker", 100, 10, 5, "./assets/images/vader.jpg");
     var vader = new Character("Darth Vader", 200, 50, 30, "./assets/images/vader.jpg");
-    var obi = new Character("Obi One", 150, 15, 2, "./assets/images/vader.jpg");
+    var obi = new Character("Obi Wan", 150, 15, 2, "./assets/images/vader.jpg");
     charArray.push(luke, vader, obi);
 }
 
@@ -120,7 +120,7 @@ $(document).on("click", "img", function () {
             if (charArray[i].name == (this).id) {
                 player = charArray[i]; // sets current player
                 $('body').css({
-                    "background-image": "url('./assets/images/" + this.id[0] + ".png')"
+                    "background-image": "url('./assets/images/" + this.id[0] + ".jpg')"
                 });
                 setBaseAttack(player);
                 charArray.splice(i, 1);
