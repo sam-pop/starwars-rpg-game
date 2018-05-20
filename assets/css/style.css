@@ -8,3 +8,7 @@
 .btn {
     text-align: center;
 }
+
+.animated {
+    animation-duration: 1.5s;
+}

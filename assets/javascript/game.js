@@ -74,6 +74,7 @@ function updatePics(fromDivID, toDivID) {
     }
 }
 
+
 // Change the view from the first screen to the second screen
 function changeView() {
     $('#firstScreen').empty();
