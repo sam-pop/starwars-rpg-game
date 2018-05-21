@@ -1,4 +1,4 @@
-# Star Wars RPG game
+# Star-Wars RPG game
 A jQuery "War" card game style Star-Wars themed RPG game. 
 
 ## What I used
