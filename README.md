@@ -1,9 +1,9 @@
 # Star Wars RPG game
-A basic "War" card game style StarWars themed RPG game. 
+A jQuery "War" card game style StarWars themed RPG game. 
 
 ## What I used
 
-This game was built using JQuery & JavaScript, HTML5, Bootstrap 4, CSS3 and Animate.CSS.
+This game was built using jQuery & JavaScript, HTML5, Bootstrap 4, CSS3 and Animate.CSS.
 
 ## Demo
 
