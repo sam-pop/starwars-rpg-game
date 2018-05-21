@@ -25,7 +25,7 @@ Character.prototype.increaseAttack = function () {
 // Performs an attack
 Character.prototype.attack = function (Obj) {
     Obj.healthPoints -= this.attackPower;
-    $('#msg').html("You attacked " +
+    $("#msg").html("You attacked " +
         Obj.name + "for " + this.attackPower + " damage points.");
     this.increaseAttack();
 };
@@ -33,7 +33,7 @@ Character.prototype.attack = function (Obj) {
 // Performs a counter attack
 Character.prototype.counterAttack = function (Obj) {
     Obj.healthPoints -= this.counterAttackPower;
-    $('#msg').append("<br>" + this.name + " counter attacked you for " + this.counterAttackPower + " damage points.");
+    $("#msg").append("<br>" + this.name + " counter attacked you for " + this.counterAttackPower + " damage points.");
 };
 
 
@@ -71,16 +71,16 @@ function characterCards(divID) {
     $(divID).children().remove();
     for (var i = 0; i < charArray.length; i++) {
         $(divID).append("<div />");
-        $(divID + ' div:last-child').addClass("card");
-        $(divID + ' div:last-child').append("<img />");
+        $(divID + " div:last-child").addClass("card");
+        $(divID + " div:last-child").append("<img />");
         $(divID + " img:last-child").attr("id", charArray[i].name);
         $(divID + " img:last-child").attr("class", "card-img-top");
         $(divID + " img:last-child").attr("src", charArray[i].pic);
         $(divID + " img:last-child").attr("width", 150);
         $(divID + " img:last-child").addClass("img-thumbnail");
-        $(divID + ' div:last-child').append(charArray[i].name + "<br>");
-        $(divID + ' div:last-child').append("HP: " + charArray[i].healthPoints);
-        $(divID + ' idv:last-child').append();
+        $(divID + " div:last-child").append(charArray[i].name + "<br>");
+        $(divID + " div:last-child").append("HP: " + charArray[i].healthPoints);
+        $(divID + " idv:last-child").append();
 
     }
 }
@@ -106,8 +106,8 @@ function playAudio() {
 
 // Change the view from the first screen to the second screen
 function changeView() {
-    $('#firstScreen').empty();
-    $('#secondScreen').show();
+    $("#firstScreen").empty();
+    $("#secondScreen").show();
 }
 
 
@@ -119,7 +119,7 @@ $(document).on("click", "img", function () {
                 defender = charArray[j]; // sets defender
                 charArray.splice(j, 1);
                 defenderSelected = true;
-                $('#msg').html("Click the button to attack!");
+                $("#msg").html("Click the button to attack!");
             }
         }
         $("#defenderDiv").append(this); // appends the selected defender to the div 
@@ -134,14 +134,14 @@ $(document).on("click", "img", function () {
             if (charArray[i].name == (this).id) {
                 player = charArray[i]; // sets current player
                 playAudio(); // starts theme song
-                $('body').css({
+                $("body").css({
                     "background-image": "url('./assets/images/" + this.id[0] + ".jpg')"
                 }); // changes the background picture according to the user selection
                 setBaseAttack(player);
                 charArray.splice(i, 1);
                 playerSelected = true;
                 changeView();
-                $('#msg').html("Pick an enemy to fight!");
+                $("#msg").html("Pick an enemy to fight!");
             }
         }
         updatePics("#game", "#defendersLeftDiv");
@@ -160,17 +160,17 @@ $(document).on("click", "#attackBtn", function () {
         if (isAlive(player) && isAlive(defender)) {
             player.attack(defender);
             defender.counterAttack(player);
-            $('#playerHealthDiv').html("HP: " + player.healthPoints);
-            $('#defenderHealthDiv').html("HP: " + defender.healthPoints);
+            $("#playerHealthDiv").html("HP: " + player.healthPoints);
+            $("#defenderHealthDiv").html("HP: " + defender.healthPoints);
             if (!isAlive(defender)) {
-                $('#defenderHealthDiv').html("DEFETED!");
-                $('#playerHealthDiv').html("Enemy defeated!");
-                $('#msg').html("Pick another enemy to battle...");
+                $("#defenderHealthDiv").html("DEFETED!");
+                $("#playerHealthDiv").html("Enemy defeated!");
+                $("#msg").html("Pick another enemy to battle...");
             }
             if (!isAlive(player)) {
-                $('#playerHealthDiv').html("YOU LOST!");
-                $('#msg').html("Try again...");
-                $('#attackBtn').html("Restart Game");
+                $("#playerHealthDiv").html("YOU LOST!");
+                $("#msg").html("Try again...");
+                $("#attackBtn").html("Restart Game");
                 $(document).on("click", "#attackBtn", function () { // restarts game
                     location.reload();
                 });
@@ -184,8 +184,8 @@ $(document).on("click", "#attackBtn", function () {
             $("#defenderHealthDiv").html("");
             defenderSelected = false;
             if (isWinner()) {
-                $('#secondScreen').hide();
-                $('#globalMsg').show();
+                $("#secondScreen").hide();
+                $("#globalMsg").show();
             }
         }
     }
@@ -193,8 +193,8 @@ $(document).on("click", "#attackBtn", function () {
 
 // EXECUTE
 $(document).ready(function () {
-    $('#secondScreen').hide();
-    $('#globalMsg').hide();
+    $("#secondScreen").hide();
+    $("#globalMsg").hide();
     initCharacters();
     characterCards("#game");
 });
