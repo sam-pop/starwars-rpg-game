@@ -6,7 +6,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
-    max-height: 100vh;
     font-size: 1.1em !important;
     font-family: 'Nunito', sans-serif !important;
 }
