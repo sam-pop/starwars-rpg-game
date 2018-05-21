@@ -3,45 +3,81 @@
 
 <head>
     <title>StarWars RPG</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12"></div>
-            <div id="pics">
-                <!-- <img id="luke" src="holder.js/100x100" />
-                <img id="vader" src="holder.js/150x150" />
-                <img id="obi" src="holder.js/200x200" /> -->
-            </div>
+    <!-- the select player character screen -->
+    <div id="firstScreen" class="container-fluid animated zoomIn bounceOut">
+        <img class="img-fluid" src="./assets/images/logo.png" alt="starwars logo" />
+        <br>
+        <br>
+        <h1>Choose wisely:</h1>
+        <br>
+        <div id="game" class="ctr container card-deck">
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div id="playerDiv">Player:</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div id="defenderDiv">Defender:</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div id="defendersLeftDiv">Defenders Left:</div>
-            </div>
-        </div>
-        <button type="button" name="attack" id="attackBtn" class="btn btn-dark btn-lg">ATTACK!</button>
     </div>
+    <!-- the main game screen -->
+    <div id="secondScreen" class="bg-trans container-fluid animated slideInDown">
+        <div class="row">
+            <div class="col-12 ctr">
+                Enemies remaining:
+                <div id="defendersLeftDiv"></div>
+            </div>
+        </div>
+        <div class="row text-center paddingTop">
+            <div class="col-5">
+                Player:
+                <div class="container" style="width: 30%;">
+                    <div id="playerDiv"></div>
+                    <div id="playerHealthDiv"></div>
+                </div>
+            </div>
+            <div class="col-2 paddingTop">
+                <!-- VS. -->
+                <img src="assets/images/Vs.png" alt="VS" width="100" />
+            </div>
+            <div class="col-5">
+                Enemy:
+                <div class="container">
+                    <div id="defenderDiv"></div>
+                    <div id="defenderHealthDiv"></div>
+                </div>
+            </div>
+        </div>
+        <!-- holds the button -->
+        <div class="row">
+            <div class="col-12 btn">
+                <div id="msg"></div>
+                <br>
+                <button type="button" name="attack" id="attackBtn" class="btn btn-dark btn-lg">ATTACK!</button>
+            </div>
+        </div>
     </div>
+    <div class="container-fluid ">
+        <div id="globalMsg" class="animated fadeInUp">
+            <p class="shadow">
+                CONGRATULATIONS!
+                <br> You saved the galaxy.
+            </p>
+        </div>
+    </div>
+    <footer>
+        Created by
+        <img src="./assets/images/lightsaber.png" width="25px" alt="lightsaber" /> Samuel Poplovitch
+    </footer>
+
+
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN "
         crossorigin="anonymous "></script>
@@ -50,7 +86,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl "
         crossorigin="anonymous "></script>
     <script src="./assets/javascript/game.js "></script>
-    <script src="./assets/javascript/holder.js "></script>
 </body>
 
 </html>

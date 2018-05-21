@@ -1,0 +1,67 @@
+body {
+    color: silver !important;
+    background-color: black;
+    background-image: url("../images/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 95vh;
+    font-size: 1.1em !important;
+    /* font-family: 'Dosis', sans-serif !important; */
+    font-family: 'Nunito', sans-serif !important;
+}
+
+.shadow {
+    text-shadow: 2px 1px 4px rgb(0, 0, 0);
+}
+
+#firstScreen {
+    min-height: 100%;
+    position: absolute;
+    text-align: center;
+    padding-top: 7%;
+    color: rgb(90, 90, 90);
+}
+
+.ctr {
+    margin: 0 auto !important;
+    text-align: center;
+}
+
+.bg-trans {
+    background: rgba(0, 0, 0, 0.527) !important;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.paddingTop {
+    padding-top: 5%;
+}
+
+.btn {
+    text-align: center;
+}
+
+.animated {
+    animation-duration: 1.5s;
+}
+
+#msg {
+    font-size: 1.2em;
+}
+
+#globalMsg {
+    padding-top: 20%;
+    text-align: center;
+    font-size: 3em;
+}
+
+footer {
+    position: absolute;
+    font-size: 0.8em;
+    bottom: 0;
+    left: 0;
+    color: rgb(207, 207, 207);
+    background-color: rgba(0, 0, 0, 0.76);
+}
